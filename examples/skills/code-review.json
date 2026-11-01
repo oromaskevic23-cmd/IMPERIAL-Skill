@@ -1,0 +1,31 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "engineering-orch",
+  "runtime_domain": "CODE_ENGINEERING",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "source_sha256"
+  ],
+  "output_fields": [
+    "review_json"
+  ],
+  "max_input_bytes": 8192,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0,
+  "skill_id": "imperial.skill.code-review",
+  "description": "Read-only engineering review proposal and risk assessment for independent examination.",
+  "exam_sha256": "e66bb87b187106a1a82d13fd0fc2ea6efc6da219fb5356cb4814a673e72d4299"
+}

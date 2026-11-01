@@ -1,0 +1,36 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "engineering-orch",
+  "runtime_domain": "CODE_ENGINEERING",
+  "capabilities": [
+    "simulate:task"
+  ],
+  "dependencies": [
+    {
+      "skill_id": "imperial.skill.code-review",
+      "version": "0.1.0"
+    }
+  ],
+  "input_fields": [
+    "task_id",
+    "requirements_sha256"
+  ],
+  "output_fields": [
+    "draft_sha256",
+    "proposal_json"
+  ],
+  "max_input_bytes": 8192,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0,
+  "skill_id": "imperial.skill.code-draft",
+  "description": "Draft an engineering implementation proposal for separate offline review and assessment.",
+  "exam_sha256": "52dbe9c6986ed82661243836f5a6dda3231591486ecc586896081fd329c78215"
+}

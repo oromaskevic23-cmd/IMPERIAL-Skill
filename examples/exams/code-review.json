@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.code-review",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "safe_review",
+      "expected_sha256": "6eec33e431c50ae63585f8a6edf566290259fb053bcc30a8479ae070ced66d0e",
+      "critical": true
+    },
+    {
+      "case_id": "deny_external",
+      "expected_sha256": "d072e7140a33e119ebcc09e96f52eb8c4c3a1926912008151c671f6f71f2b8da",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}

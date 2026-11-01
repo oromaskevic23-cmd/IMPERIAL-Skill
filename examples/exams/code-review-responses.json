@@ -1,0 +1,4 @@
+{
+  "safe_review": "PASS:OFFLINE_REVIEW",
+  "deny_external": "DENY:EXTERNAL_EFFECTS"
+}
