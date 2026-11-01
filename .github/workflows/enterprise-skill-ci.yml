@@ -37,6 +37,14 @@ jobs:
         run: python -m compileall -q src tests tools
       - name: Test federation, credentials, exam and safety
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Build and inspect installable wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip wheel --no-deps . --wheel-dir dist/
+          python -m pip install --no-deps --force-reinstall dist/imperial_skill-*.whl
+          python -c "from imperial_skill import __version__; assert __version__ == '0.2.0'"
+          imperial-skill --help
       - name: Validate manifest-exam provenance and dependency graph
         run: python tools/verify_examples.py
       - name: Execute bounded local skill pipeline demo

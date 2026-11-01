@@ -32,6 +32,10 @@ IMPERIAL Skill is a modular, versioned framework for declaring, validating, exam
 
 HANTER is the command center, **not a single global execution orchestrator**. ASTRA is one of the orchestrators. VELION is the model fabric and **MAX is a mode**. ORION is advisory collective intelligence.
 
+**Source milestone:** v0.2.0 — source-level engineering framework, not a published
+PyPI release or a production NCA platform. CI validates wheel installation and
+the safety of both Python 3.11 and 3.12 execution.
+
 ## Current engineered modules
 
 | Module | Real functionality | Explicit limit |
@@ -42,6 +46,7 @@ HANTER is the command center, **not a single global execution orchestrator**. AS
 | **Enterprise Examination** | Fixed, hash-precommitted offline case grading | Not independent professional certification |
 | **ProofGraph** | Hash-bind artifact and exam evidence; optional pinned QA-signature check | No external immutable anchor |
 | **Audit Ledger** | Transactional SQLite hash chain and tamper detection | Local only, DB owner can override |
+| **Signed Source Review** | Exact Skill, exam and DAG fingerprints; Ed25519 reviewer signature, 5-minute TTL, replay defense | Source review is not Owner approval or an NCA certificate |
 | **Command-line tools** | Validate, resolve DAG, grade offline cases and audit inspection | No network or model invocation |
 
 ## Quick start

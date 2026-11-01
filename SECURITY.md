@@ -21,3 +21,13 @@ Use a private GitHub Security Advisory; do not publish exploit payloads, credent
 Protected Owner key custody, real signed permit E2E, independently revocable AI Passport, sandboxed worker execution, distinct role-appropriate independent QA and its signature, time-bounded task identity, externally anchored audit evidence where appropriate, true process-level kill switch and explicit separate production release.
 
 **Architecture → Implementation → Evidence.**
+
+## Signed Skill source review
+
+The offline source-release review only verifies a separately pinned reviewer
+signature, a versioned descriptor and exam definition. A source-review signature
+does not grant Owner authorization or an agent's right to execute.
+
+See [Source Release Review](docs/SOURCE_RELEASE_REVIEW.md) for its exact trust
+boundary and replay model. Do not store an Owner key, reviewer private key or
+HANTER delegated issuer key in GitHub.

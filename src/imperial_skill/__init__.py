@@ -8,4 +8,4 @@ from .audit import LocalAuditLedger
 
 __all__ = ["validate_manifest", "manifest_digest", "canonical_json",
            "SkillRegistry", "LocalAuditLedger"]
-__version__ = "0.1.0"
+__version__ = "0.2.0"
