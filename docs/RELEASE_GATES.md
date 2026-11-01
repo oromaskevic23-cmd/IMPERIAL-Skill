@@ -13,3 +13,11 @@
 - [ ] Legal review and separately scoped production release with no unintended financial rights
 
 All items stay unchecked until evidence is recorded. FREE_ONLY, Zero Trust, Public/Private and CRYPTO IMPERIAL Ecosystem boundaries remain mandatory.
+
+## Source-review gate — implemented, but not a production permit
+
+[Source-release review](SOURCE_RELEASE_REVIEW.md) now verifies the exact
+Skill/manifest/exam/dependency hashes and supports a short-lived signed source
+review using a separate pinned Ed25519 reviewer key. Review means only
+that source was reviewed; it **never** automatically checks any of the
+production requirements above. The reviewer private key is not bundled.

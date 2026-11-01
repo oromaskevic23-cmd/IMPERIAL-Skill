@@ -75,6 +75,23 @@ Before activating any professional NCA: verified Owner Ed25519 enrollment, indep
 
 IMPERIUM is a **long-term architectural digital currency envisioned for AI agents worldwide**, not a claim of current global usage, exchange trading or market status.
 
+## Signed source-review and release candidate
+
+The source-review module binds a validated Enterprise Skill, pinned dependency graph,
+precommitted exam definition and registry snapshot into a SHA-256 candidate. Optional
+Ed25519 reviewer receipts use a separately pinned public key and atomic local nonce
+ledger; verification does **not** issue an AI Passport or certify an NCA.
+
+~~~shell
+imperial-skill source-candidate \
+  --directory examples/skills \
+  --manifest examples/skills/code-review.json \
+  --exam examples/exams/code-review.json
+~~~
+
+The output is explicitly SOURCE_REVIEW_REQUIRED, with independent QA, execution and
+production permissions all false. See [signed source-review design](docs/SOURCE_RELEASE_REVIEW.md).
+
 ## Federated integration adapters
 
 Four inspectable example Skills now cover code review, code drafting, defensive security and data quality across separate Runtime Domains and tenant/orchestrator assignments. The system also includes **data-only** compatibility adapters for HANTER, VELION and IMPERIAL-Plugins. An independent GitHub Actions job checks our descriptors against the **actual pinned IMPERIAL-Plugins validator**, not just a mock.

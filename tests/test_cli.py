@@ -49,6 +49,45 @@ class CliTests(unittest.TestCase):
         self.assertEqual(before,f.read_bytes())
         with sqlite3.connect(f) as db:
             self.assertIsNone(db.execute("SELECT name FROM sqlite_master WHERE name='audit'").fetchone())
+    def test_source_candidate_binds_exam_and_no_execution(self):
+        import hashlib
+        from imperial_skill.exams import validate_exam
+        definition={"schema":"imperial.skill.offline-exam.v1",
+            "skill_id":"imperial.skill.code-review","version":"0.1.0",
+            "cases":[{"case_id":"safe_refusal","expected_sha256":
+               hashlib.sha256(b"DENIED").hexdigest(),"critical":True}],
+            "minimum_percent":100,"independent_qa_required":True}
+        directory=self.d/"skills";directory.mkdir()
+        item=manifest(exam_sha256=validate_exam(definition)["exam_sha256"])
+        target=directory/"code.json"
+        target.write_text(json.dumps(item))
+        exam_path=self.d/"exam.json"
+        exam_path.write_text(json.dumps(definition))
+        rc,out,err=self.call("source-candidate","--directory",directory,
+                             "--manifest",target,"--exam",exam_path)
+        self.assertEqual(rc,0,err)
+        candidate=json.loads(out)
+        self.assertEqual(candidate["stage"],"SOURCE_REVIEW_REQUIRED")
+        self.assertFalse(candidate["production_authorized"])
+        self.assertFalse(candidate["independent_qa_verified"])
+        self.assertFalse(candidate["execution_authorized"])
+
+    def test_source_candidate_rejects_changed_exam(self):
+        directory=self.d/"skills";directory.mkdir()
+        target=directory/"code.json"
+        target.write_text(json.dumps(manifest()))
+        definition={"schema":"imperial.skill.offline-exam.v1",
+            "skill_id":"imperial.skill.code-review","version":"0.1.0",
+            "cases":[{"case_id":"case_one","expected_sha256":"b"*64,
+                      "critical":True}],
+            "minimum_percent":100,"independent_qa_required":True}
+        exam_path=self.d/"exam.json"
+        exam_path.write_text(json.dumps(definition))
+        rc,out,err=self.call("source-candidate","--directory",directory,
+                             "--manifest",target,"--exam",exam_path)
+        self.assertEqual(rc,2)
+        self.assertIn("SkillValidationError",err)
+
     def test_existing_ledger_can_be_inspected_readonly(self):
         f=self.d/"audit.sqlite"
         audit=LocalAuditLedger(f)

@@ -56,6 +56,22 @@ class BridgeTests(unittest.TestCase):
             with self.subTest(bad=str(type(bad))),self.assertRaises(SkillValidationError):
                 make_hanter_intent(skill_plan=plan(),agent_id="NCA-424",
                      task_id="TASK-001",input_data=bad)
+    def test_self_rehashed_overprivileged_velion_intent_denied(self):
+        import hashlib
+        from imperial_skill.manifest import canonical_json
+        original=make_hanter_intent(skill_plan=plan(),agent_id="NCA-424",
+                      task_id="TASK-001",input_data=b"synthetic")
+        for patch in ({"external_effects":True},{"spending_usd":1},
+                      {"spending_usd":False},{"schema":"foreign.intent"},
+                      {"tenant_id":[]},{"agent_id":"../outside"},
+                      {"input_sha256":"NOT_A_SHA"}):
+            with self.subTest(patch=patch):
+                value={**original,**patch}
+                payload={k:v for k,v in value.items() if k!="intent_sha256"}
+                value["intent_sha256"]=hashlib.sha256(canonical_json(payload)).hexdigest()
+                with self.assertRaises(SkillValidationError):
+                    velion_route_hint(value,approved_model="local-qwen-1.5b")
+
     def test_invalid_model_id_denied(self):
         intent=make_hanter_intent(skill_plan=plan(),agent_id="NCA-424",task_id="TASK-001",input_data=b"ok")
         with self.assertRaises(SkillValidationError):

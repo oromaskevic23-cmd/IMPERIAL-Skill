@@ -10,6 +10,7 @@ from .manifest import read_json_strict,validate_manifest,manifest_digest,SkillVa
 from .registry import SkillRegistry
 from .audit import LocalAuditLedger
 from .exams import grade_offline_exam,validate_exam
+from .release import prepare_candidate
 
 def _read(path: Path) -> dict:
     if path.is_symlink() or not path.is_file() or path.stat().st_size > 65536:
@@ -29,6 +30,11 @@ def main(argv: list[str] | None = None) -> int:
     plan.add_argument("--domain",required=True)
     plan.add_argument("--skill-id",required=True)
     plan.add_argument("--version",required=True)
+    candidate=sub.add_parser("source-candidate",
+       help="Hash-bind a registered Skill, exact dependency plan and precommitted exam")
+    candidate.add_argument("--directory",required=True,type=Path)
+    candidate.add_argument("--manifest",required=True,type=Path)
+    candidate.add_argument("--exam",required=True,type=Path)
     audit=sub.add_parser("audit-verify",help="Check local SQLite hash-linked Audit Ledger")
     audit.add_argument("db",type=Path)
     exam=sub.add_parser("exam-grade",help="Only reference hash matching; NOT independent QA")
@@ -52,6 +58,16 @@ def main(argv: list[str] | None = None) -> int:
                 registry.register(_read(path))
             result=registry.resolve(tenant_id=args.tenant,orchestrator_id=args.orchestrator,
                  runtime_domain=args.domain,skill_id=args.skill_id,version=args.version)
+        elif args.command=="source-candidate":
+            if args.directory.is_symlink() or not args.directory.is_dir():
+                raise SkillValidationError("REGISTRY_DIRECTORY_INVALID")
+            paths=sorted(args.directory.glob("*.json"))
+            if not paths or len(paths)>256:
+                raise SkillValidationError("REGISTRY_FILE_COUNT_INVALID")
+            registry=SkillRegistry()
+            for path in paths:
+                registry.register(_read(path))
+            result=prepare_candidate(registry,_read(args.manifest),_read(args.exam))
         elif args.command=="audit-verify":
             if args.db.is_symlink() or not args.db.is_file():
                 raise SkillValidationError("LEDGER_FILE_REQUIRED")

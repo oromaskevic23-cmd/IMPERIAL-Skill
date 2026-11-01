@@ -20,6 +20,13 @@ REVIEW_FIELDS = frozenset({"schema", "candidate_sha256", "reviewer_id", "key_id"
                            "expires_at", "production_authorized", "external_effects", "spending_usd"})
 NO_EFFECT = {"production_authorized": False, "external_effects": False, "spending_usd": 0}
 TOKEN = re.compile(r"^[a-f0-9]{64}$")
+CANDIDATE_FIELDS = frozenset({
+    "schema", "skill_id", "version", "tenant_id", "orchestrator_id",
+    "runtime_domain", "manifest_sha256", "exam_sha256", "plan_sha256",
+    "registry_sha256", "stage", "independent_qa_verified",
+    "execution_authorized", "production_authorized", "external_effects",
+    "spending_usd", "candidate_sha256",
+})
 
 def prepare_candidate(registry: SkillRegistry, descriptor: dict, exam: dict) -> dict:
     """Bind registered manifest, exam definition and exact federated plan."""
@@ -96,9 +103,18 @@ def verify_source_review(*, candidate: dict, receipt: dict,
         raise SkillValidationError("PINNED_REVIEW_TRUST_REQUIRED")
     if not callable(revoked):
         raise SkillValidationError("REVIEW_REVOCATION_REQUIRED")
-    if type(candidate) is not dict or "candidate_sha256" not in candidate:
-        raise SkillValidationError("CANDIDATE_REQUIRED")
+    if type(candidate) is not dict or set(candidate) != CANDIDATE_FIELDS:
+        raise SkillValidationError("CANDIDATE_SCHEMA_DENIED")
     body = {k: v for k, v in candidate.items() if k != "candidate_sha256"}
+    for field in ("manifest_sha256", "exam_sha256", "plan_sha256", "registry_sha256"):
+        if type(body[field]) is not str or not SHA256.fullmatch(body[field]):
+            raise SkillValidationError("CANDIDATE_HASH_SCHEMA_DENIED")
+    for field in ("tenant_id", "orchestrator_id"):
+        if type(body[field]) is not str or not IDENT.fullmatch(body[field]):
+            raise SkillValidationError("CANDIDATE_BOUNDARY_DENIED")
+    if any(type(body[k]) is not str for k in
+           ("skill_id", "version", "runtime_domain")):
+        raise SkillValidationError("CANDIDATE_IDENTITY_DENIED")
     if (body.get("schema") != "imperial.skill.source-candidate.v1"
         or body.get("stage") != "SOURCE_REVIEW_REQUIRED"
         or body.get("independent_qa_verified") is not False

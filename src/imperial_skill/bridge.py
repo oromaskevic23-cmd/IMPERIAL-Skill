@@ -93,7 +93,18 @@ def velion_route_hint(intent: dict, *, approved_model: str) -> dict:
         or type(approved_model) is not str or not IDENT.fullmatch(approved_model)
         or intent.get("stage")!="INTENT_PROPOSAL_ONLY"
         or intent.get("execution_authorized") is not False
-        or intent.get("production_authorized") is not False):
+        or intent.get("production_authorized") is not False
+        or intent.get("external_effects") is not False
+        or type(intent.get("spending_usd")) is not int
+        or intent["spending_usd"] != 0
+        or intent.get("schema") != "imperial.hanter.skill-intent.v1"
+        or type(intent.get("skill_plan_sha256")) is not str
+        or not SHA256.fullmatch(intent["skill_plan_sha256"])
+        or type(intent.get("input_sha256")) is not str
+        or not SHA256.fullmatch(intent["input_sha256"])
+        or any(type(intent.get(k)) is not str or not IDENT.fullmatch(intent[k])
+               for k in ("tenant_id", "orchestrator_id", "agent_id", "task_id"))
+        or type(intent.get("runtime_domain")) is not str):
         raise SkillValidationError("VELION_INTENT_DENIED")
     payload={k:v for k,v in intent.items() if k!="intent_sha256"}
     if hashlib.sha256(canonical_json(payload)).hexdigest()!=intent.get("intent_sha256"):
