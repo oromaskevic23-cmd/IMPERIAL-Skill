@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.security-review",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "detect-risk",
+      "expected_sha256": "505405d54398c2796f5599026270cf82b2973eddc15f76343ebd69d2174132eb",
+      "critical": true
+    },
+    {
+      "case_id": "deny-attack",
+      "expected_sha256": "79b92d6afa816e4bd67c0f5a159362efdd117ed5bd5020c29fff3e4fd3acc8b3",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}

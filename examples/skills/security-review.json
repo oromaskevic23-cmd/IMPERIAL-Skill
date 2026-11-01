@@ -1,0 +1,31 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "version": "0.1.0",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "artifact_sha256"
+  ],
+  "output_fields": [
+    "report_json"
+  ],
+  "max_input_bytes": 8192,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0,
+  "skill_id": "imperial.skill.security-review",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "security-orch",
+  "runtime_domain": "SECURITY_DEFENSIVE",
+  "description": "Defensive offline software risk analysis with no exploitation or external actions.",
+  "exam_sha256": "5d98cd65d34171a52055542f2e03f6433a86b6cb19b35b3ae310325b21ad2e83"
+}

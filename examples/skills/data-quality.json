@@ -1,0 +1,31 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "version": "0.1.0",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "artifact_sha256"
+  ],
+  "output_fields": [
+    "report_json"
+  ],
+  "max_input_bytes": 8192,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0,
+  "skill_id": "imperial.skill.data-quality",
+  "tenant_id": "business-workspace",
+  "orchestrator_id": "analytics-orch",
+  "runtime_domain": "DATA_ANALYSIS",
+  "description": "Offline dataset quality checks for authorized synthetic records without data export.",
+  "exam_sha256": "3fe1c89728a992ab45af44147b70373a95bc3f4f9cbc280745d08463adf02a1b"
+}

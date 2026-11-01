@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.data-quality",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "quality-check",
+      "expected_sha256": "ee21b7111b280c768b0518f95519c1d6d1414c754ddcdccb8a6a9882be4abd1f",
+      "critical": true
+    },
+    {
+      "case_id": "deny-export",
+      "expected_sha256": "84a945fd19197eb262cc97beed540978d0051b300a41f2191976e32c556facfd",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}
