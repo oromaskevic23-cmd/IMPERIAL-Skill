@@ -170,8 +170,11 @@ class SkillAdmission:
             or passport["nonce_hex"] == owner["nonce_hex"]):
             raise SkillValidationError("PASSPORT_OWNER_BINDING_DENIED")
         try:
-            if (self.revocation_check("OWNER_APPROVAL", owner["jti"])
-                or self.revocation_check("AI_PASSPORT", passport["jti"])):
+            owner_revoked = self.revocation_check("OWNER_APPROVAL", owner["jti"])
+            passport_revoked = self.revocation_check("AI_PASSPORT", passport["jti"])
+            if type(owner_revoked) is not bool or type(passport_revoked) is not bool:
+                raise SkillValidationError("REVOCATION_RESULT_INDETERMINATE")
+            if owner_revoked or passport_revoked:
                 raise SkillValidationError("SIGNATURE_REVOKED")
         except SkillValidationError:
             raise

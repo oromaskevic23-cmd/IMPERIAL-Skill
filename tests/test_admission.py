@@ -56,16 +56,17 @@ class AdmissionTests(unittest.TestCase):
         auth=SkillAdmission(self.authorities,self.replay,
                             lambda kind,jti:(_ for _ in ()).throw(ConnectionError()))
         with self.assertRaisesRegex(SkillValidationError,"REVOCATION_CHECK_UNAVAILABLE"):
-            self.admit(**{"owner_envelope":self.owner_doc,
-              "passport_envelope":self.passport_doc,"plan":self.plan,
-              "task_id":"TASK-001","agent_id":"NCA-424",
-              "now":NOW,"owner_kill_switch":False,
-              "guardian_approved":True,"competency_verified":True,
-              "guardian_approved":True}) if False else auth.admit(
-                 owner_envelope=self.owner_doc,passport_envelope=self.passport_doc,
-                 plan=self.plan,task_id="TASK-001",agent_id="NCA-424",
-                 now=NOW,owner_kill_switch=False,guardian_approved=True,
-                 competency_verified=True)
+            auth.admit(owner_envelope=self.owner_doc,passport_envelope=self.passport_doc,
+                       plan=self.plan,task_id="TASK-001",agent_id="NCA-424",
+                       now=NOW,owner_kill_switch=False,guardian_approved=True,
+                       competency_verified=True)
+    def test_indeterminate_revocation_result_denied(self):
+        auth=SkillAdmission(self.authorities,self.replay,lambda kind,jti:None)
+        with self.assertRaisesRegex(SkillValidationError,"REVOCATION_RESULT_INDETERMINATE"):
+            auth.admit(owner_envelope=self.owner_doc,passport_envelope=self.passport_doc,
+                       plan=self.plan,task_id="TASK-001",agent_id="NCA-424",
+                       now=NOW,owner_kill_switch=False,guardian_approved=True,
+                       competency_verified=True)
     def test_default_owner_kill_switch(self):
         self.denied(owner_kill_switch=True)
         self.denied(owner_kill_switch=False,guardian_approved=False)

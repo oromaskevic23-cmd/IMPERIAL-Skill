@@ -4,6 +4,8 @@ import argparse
 import json
 import sys
 from pathlib import Path
+from urllib.parse import quote
+import sqlite3
 from .manifest import read_json_strict,validate_manifest,manifest_digest,SkillValidationError
 from .registry import SkillRegistry
 from .audit import LocalAuditLedger
@@ -53,9 +55,17 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command=="audit-verify":
             if args.db.is_symlink() or not args.db.is_file():
                 raise SkillValidationError("LEDGER_FILE_REQUIRED")
-            result=LocalAuditLedger(args.db).verify()
-            if not result["verified"]:
-                raise SkillValidationError("AUDIT_LEDGER_INTEGRITY_FAILURE")
+            # Inspection never creates or modifies a database.
+            uri="file:"+quote(str(args.db.resolve()))+"?mode=ro"
+            try:
+                with sqlite3.connect(uri,uri=True,timeout=3) as db:
+                    count,latest=LocalAuditLedger._verify_db(db)
+            except (sqlite3.Error,SkillValidationError) as exc:
+                raise SkillValidationError("AUDIT_LEDGER_INTEGRITY_FAILURE") from exc
+            if count==0:
+                raise SkillValidationError("EMPTY_LEDGER_HAS_NO_EVIDENCE")
+            result={"verified":True,"entries":count,"head_sha256":latest,
+                    "immutable":False,"externally_attested":False}
         else:
             definition=_read(args.exam)
             validate_exam(definition)

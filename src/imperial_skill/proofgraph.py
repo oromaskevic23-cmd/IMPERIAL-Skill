@@ -77,7 +77,9 @@ def verify_independent_qa_receipt(*, proof_sha256: str, qa_receipt: dict,
     fields = {"schema","proof_sha256","examiner_id","decision",
               "external_effects","production_authorized","spending_usd"}
     if (type(qa_receipt) is not dict or set(qa_receipt)!=fields
-        or type(signature) is not str or type(trusted_qa_spki) is not bytes
+        or type(signature) is not str or not 85 <= len(signature) <= 88
+        or any(c not in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" for c in signature)
+        or type(trusted_qa_spki) is not bytes
         or len(trusted_qa_spki)!=32 or type(trusted_qa_id) is not str):
         return deny
     if (qa_receipt["schema"]!="imperial.skill.external-qa-receipt.v1"
