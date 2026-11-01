@@ -63,7 +63,7 @@ imperial-skill exam-grade \
   examples/exams/code-review-responses.json
 ~~~
 
-The sample Skill graph contains **code-review → code-draft** with pinned versions, precommitted exam definitions and strict tenant/domain routing. Even when offline tests pass, the CLI returns **execution_authorized=false** or **independent_qa_verified=false**.
+The sample engineering Skill graph contains **code-review → code-draft** with pinned versions, precommitted exam definitions and strict tenant/domain routing. Even when offline tests pass, the CLI returns **execution_authorized=false** or **independent_qa_verified=false**.
 
 ## Production release policy
 
@@ -75,9 +75,20 @@ Before activating any professional NCA: verified Owner Ed25519 enrollment, indep
 
 IMPERIUM is a **long-term architectural digital currency envisioned for AI agents worldwide**, not a claim of current global usage, exchange trading or market status.
 
+## Federated integration adapters
+
+Four inspectable example Skills now cover code review, code drafting, defensive security and data quality across separate Runtime Domains and tenant/orchestrator assignments. The system also includes **data-only** compatibility adapters for HANTER, VELION and IMPERIAL-Plugins. An independent GitHub Actions job checks our descriptors against the **actual pinned IMPERIAL-Plugins validator**, not just a mock.
+
+~~~shell
+python tools/demo_federation.py
+~~~
+
+This is a local skill-planning demonstration only. It does not invoke a real LLM, deploy workers, accept wallets or bypass Owner Approval. See [integrations](docs/INTEGRATIONS.md).
+
 ## Documentation
 
 - [Enterprise architecture](docs/ARCHITECTURE.md)
+- [Inter-repository integration contracts](docs/INTEGRATIONS.md)
 - [Threat model](docs/THREAT_MODEL.md)
 - [Skill standard](docs/SKILL_STANDARD.md)
 - [Production release gates](docs/RELEASE_GATES.md)

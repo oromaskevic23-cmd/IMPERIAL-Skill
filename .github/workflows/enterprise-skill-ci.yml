@@ -39,11 +39,31 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Validate manifest-exam provenance and dependency graph
         run: python tools/verify_examples.py
+      - name: Execute bounded local skill pipeline demo
+        run: python tools/demo_federation.py
       - name: CLI smoke tests
         run: |
           imperial-skill validate examples/skills/code-review.json
           imperial-skill plan --directory examples/skills --tenant imperial-internal --orchestrator engineering-orch --domain CODE_ENGINEERING --skill-id imperial.skill.code-draft --version 0.1.0
           imperial-skill exam-grade examples/exams/code-review.json examples/exams/code-review-responses.json
+  cross-repository-plugin-contract:
+    name: IMPERIAL-Plugins pinned contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout IMPERIAL-Skill
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Checkout pinned IMPERIAL-Plugins source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: oromaskevic23-cmd/IMPERIAL-Plugins
+          ref: c983d81d1d2f7385bebd416e90909c5ae0d9d1eb
+          path: pinned-plugins
+          persist-credentials: false
+      - name: Verify real plugin manifest validator compatibility
+        run: PYTHONPATH=src:pinned-plugins/src python tools/test_plugins_bridge.py
   rights-and-boundary:
     runs-on: ubuntu-latest
     timeout-minutes: 5
