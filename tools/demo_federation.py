@@ -4,7 +4,7 @@ from tempfile import TemporaryDirectory
 from imperial_skill.manifest import read_json_strict
 from imperial_skill.registry import SkillRegistry
 from imperial_skill.bridge import to_plugins_manifest,make_hanter_intent,velion_route_hint
-from imperial_skill.exams import grade_offline_exam
+from imperial_skill.exams import grade_offline_exam, validate_exam
 from imperial_skill.proofgraph import make_local_proof,verify_local_proof
 from imperial_skill.audit import LocalAuditLedger
 
@@ -24,7 +24,7 @@ def main():
     result=grade_offline_exam(definition,{k:v.encode("utf-8") for k,v in responses.items()})
     sample=b"NONEXECUTED_SKILL_CODE_DRAFT"
     proof=make_local_proof(plan_sha256=p["plan_sha256"],
-              artifact=sample,exam_sha256=p["steps"][0]["manifest_sha256"],
+              artifact=sample,exam_sha256=validate_exam(definition)["exam_sha256"],
               grade_report=result)
     checked=verify_local_proof(proof,sample,result,previous_sha256="0"*64)
     with TemporaryDirectory() as directory:
@@ -33,6 +33,7 @@ def main():
                 "proof_sha256":proof["proof_sha256"],"lab_only":True})
         assertion=ledger.verify()
     assert len(p["steps"])==2 and model["actual_model_called"] is False
+    assert proof["exam_sha256"] == validate_exam(definition)["exam_sha256"]
     assert checked["integrity_verified"] is True and checked["independent_qa_verified"] is False
     assert assertion["verified"] is True and assertion["externally_attested"] is False
     assert result["reference_match_pass"] and not result["professional_certified"]
