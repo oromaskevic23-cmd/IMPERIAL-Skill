@@ -13,7 +13,7 @@ for item in sorted(path.glob("*.json")):
     assert actual==converted,"INCOMPATIBLE_IMPERIAL_PLUGIN_CONTRACT"
     assert set(converted["capabilities"]) <= {"read:public","simulate:task","route:internal"}
     count+=1
-assert count==8
+assert count==9
 print("REAL_PINNED_PLUGIN_CONTRACT_PASS",
       "manifest_count",count,"production_execution_authorized",False,
       "connected_production_runtime",False)
