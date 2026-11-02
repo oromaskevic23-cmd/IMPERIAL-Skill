@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.subagents-100",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "plan-exact-100",
+      "expected_sha256": "3c5a2be268e1adcc2c711fa19176422f3292c18909600c91b352c0f8f956dbdb",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unauthorized",
+      "expected_sha256": "752aa735485c16f93984f9a8c034ebcc5624c0490c20e6f6447cf136354bb6f2",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}
