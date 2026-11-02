@@ -129,3 +129,10 @@ New offline Enterprise Skill contracts: **desktop-accessibility**, **model-train
 Technical references are agent-desktop (Apache-2.0), nanochat (MIT), Scrapling (BSD-3-Clause), and worktrunk (MIT OR Apache-2.0). They remain separate third-party projects, without endorsement or transfer of rights. See [implementation and limitations](docs/FOUR_GOVERNED_SKILLS.md) and the original [skill instructions](skills/).
 
 **Scope:** bounded offline inspection only. No real desktop interaction, web requests, model training, Git mutation, production NCA permissions, or external deployment. Enrollment, approvals, independently witnessed QA and runtime integrations remain release gates.
+
+
+## Governed 100-Subagent Enterprise Skill — offline source milestone
+
+The new [100 Subagents Skill](skills/100-subagents/SKILL.md) implements a source-only, deterministic plan for **exactly 100 symbolic sub-NCA identities across 10 squads of 10**, with task-bound SHA-256, a maximum of 10 proposed concurrent slots, and strict fail-closed validation. It provides a runnable [offline demonstration](tools/demo_subagents_100.py), [adversarial regression tests](tests/test_subagents_100.py), SHA-256-bound [manifest and exam](examples/skills/subagents-100.json), and [production admission requirements](docs/SUBAGENTS_100.md).
+
+**Truth boundary:** no real subagents, Owner credentials, model inference, independent external QA, cloud workers or 24/7 server deployment are created; all plans report execution_authorized=false, worker_started=false and spending_usd=0. Real HANTER → federated orchestrator → NCA deployment requires separate Owner Ed25519, AI Passport, Guardian Core, Approval Gateway, Audit Ledger, ProofGraph, independent QA and Owner Kill Switch evidence.
