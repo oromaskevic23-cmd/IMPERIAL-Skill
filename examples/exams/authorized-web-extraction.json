@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.authorized-web-extraction",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "f1e20ba5aaa88d58357fbddf5933ee46303693bbde55194129fb87dff87088cb",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "a7aa8ab78f9c0206f9c7f2be374a2d8c7dd9f213b1298cc9a67bcd507f4ec0da",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}

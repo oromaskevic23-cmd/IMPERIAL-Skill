@@ -120,3 +120,12 @@ This is a local skill-planning demonstration only. It does not invoke a real LLM
 ## Ownership and third parties
 
 Original IMPERIAL Core architecture and original project work are attributed to Alexander Nikolaevich Romaskevich (RomaskevicH). Third-party software and model weights retain their own terms; this project does not claim to own or be endorsed by their vendors. See [LICENSE.md](LICENSE.md). GitHub documentation and code are in English.
+
+
+## Four original governed engineering Skills (2 November 2026)
+
+New offline Enterprise Skill contracts: **desktop-accessibility**, **model-training-lab**, **authorized-web-extraction**, **parallel-git-worktrees**. Each has a versioned manifest, SHA-256-bound synthetic exam, original Python adapter and adversarial regression tests. These were developed independently as IMPERIAL Core modules; no third-party repository was copied, forked or installed.
+
+Technical references are agent-desktop (Apache-2.0), nanochat (MIT), Scrapling (BSD-3-Clause), and worktrunk (MIT OR Apache-2.0). They remain separate third-party projects, without endorsement or transfer of rights. See [implementation and limitations](docs/FOUR_GOVERNED_SKILLS.md) and the original [skill instructions](skills/).
+
+**Scope:** bounded offline inspection only. No real desktop interaction, web requests, model training, Git mutation, production NCA permissions, or external deployment. Enrollment, approvals, independently witnessed QA and runtime integrations remain release gates.

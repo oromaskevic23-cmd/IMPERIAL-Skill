@@ -1,0 +1,31 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "skill_id": "imperial.skill.desktop-accessibility",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "operations-orch",
+  "runtime_domain": "OPERATIONS_LAB",
+  "description": "Validate snapshot-scoped accessibility references from supplied native desktop observation without triggering OS actions.",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "snapshot_json"
+  ],
+  "output_fields": [
+    "ref_sha256"
+  ],
+  "exam_sha256": "6d58970a37593f076c9be3bfb6d71df7feb8d233c5ebdb228fc203a70b239886",
+  "max_input_bytes": 65536,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0
+}
