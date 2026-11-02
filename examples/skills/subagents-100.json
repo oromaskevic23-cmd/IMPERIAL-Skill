@@ -1,0 +1,36 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "skill_id": "imperial.skill.subagents-100",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "engineering-orch",
+  "runtime_domain": "CODE_ENGINEERING",
+  "description": "Plan exactly one hundred sandboxed symbolic subagents across ten federated squads with strict zero-execution gates.",
+  "capabilities": [
+    "read:public",
+    "simulate:task",
+    "route:internal"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "mission_id",
+    "source_sha256",
+    "agent_count",
+    "max_parallel"
+  ],
+  "output_fields": [
+    "plan_sha256",
+    "roster_digest",
+    "batch_count"
+  ],
+  "exam_sha256": "756b3b5d5eeb07aac0436e6cdca354a8da94d2d59b95808f6b4755cc67915067",
+  "max_input_bytes": 16384,
+  "max_output_bytes": 65536,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0
+}
