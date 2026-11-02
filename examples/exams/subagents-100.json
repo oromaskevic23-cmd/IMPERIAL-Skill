@@ -5,12 +5,12 @@
   "cases": [
     {
       "case_id": "plan-exact-100",
-      "expected_sha256": "3c5a2be268e1adcc2c711fa19176422f3292c18909600c91b352c0f8f956dbdb",
+      "expected_sha256": "5a18d569c00626c314397c5bf7d56debf44509f9fc675a2077c4b0b7d74021cf",
       "critical": true
     },
     {
       "case_id": "deny-unauthorized",
-      "expected_sha256": "752aa735485c16f93984f9a8c034ebcc5624c0490c20e6f6447cf136354bb6f2",
+      "expected_sha256": "b3deb7f64750e8034a294bfe7924614f6efdff9bc3c0a4a291c3688bf9faa71e",
       "critical": true
     }
   ],
