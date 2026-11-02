@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.model-training-lab",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "c309442e432f612b9fdaf8e58fce8536bf9b2202b771c677a643de5a67b2d518",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "0a939d2458b43c802d64438030035914285604affb7d3cadead2450fa4237954",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}
