@@ -63,20 +63,20 @@ class TrendingSkillsTests(unittest.TestCase):
             public_html_review('https://example.org','<h1>test</h1>',approved=True,robots_allowed=False)
 
     def test_worktree_read_only(self):
-        data='worktree /tmp/a\\nHEAD '+'a'*40+'\\nbranch refs/heads/main\\n\\n'+\
-             'worktree /tmp/b\\nHEAD '+'b'*40+'\\nbranch refs/heads/feature\\n'
+        data='worktree /tmp/a\nHEAD '+'a'*40+'\nbranch refs/heads/main\n\n'+\
+             'worktree /tmp/b\nHEAD '+'b'*40+'\nbranch refs/heads/feature\n'
         r=worktree_status_review(data)
         self.assertEqual(r['worktree_count'],2)
         self.assertFalse(r['git_command_executed'])
 
     def test_worktree_duplicate_branches_denied(self):
-        data='worktree /tmp/a\\nHEAD '+'a'*40+'\\nbranch refs/heads/main\\n\\n'+\
-             'worktree /tmp/b\\nHEAD '+'b'*40+'\\nbranch refs/heads/main\\n'
+        data='worktree /tmp/a\nHEAD '+'a'*40+'\nbranch refs/heads/main\n\n'+\
+             'worktree /tmp/b\nHEAD '+'b'*40+'\nbranch refs/heads/main\n'
         with self.assertRaises(SkillBoundaryError):
             worktree_status_review(data)
 
     def test_worktree_malformed_denied(self):
-        for data in ('','HEAD '+'a'*40,'worktree /tmp/a\\ncommand rm -rf /'):
+        for data in ('','HEAD '+'a'*40,'worktree /tmp/a\ncommand rm -rf /'):
             with self.subTest(data=data),self.assertRaises(SkillBoundaryError):
                 worktree_status_review(data)
 if __name__=='__main__':
