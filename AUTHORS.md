@@ -7,8 +7,8 @@
 **Project:** IMPERIAL Core / IMPERIAL-Skill
 
 The founding architecture and original project work are attributed to Alexander
-Nikolaevich Romaskevich. Individual Git commits and contributions retain their
-authorship and their applicable licenses. Third-party packages, model weights,
+Nikolaevich Romaskevich. Git contribution records and individual commit authorship remain preserved;
+their applicable licenses continue to apply. Third-party packages, model weights,
 logos and upstream products remain the property of their respective owners.
 
 Do not rewrite author history, substitute licensing, or claim endorsement by
