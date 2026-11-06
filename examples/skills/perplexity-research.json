@@ -1,0 +1,33 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "skill_id": "imperial.skill.perplexity-research",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "analytics-orch",
+  "runtime_domain": "DATA_ANALYSIS",
+  "description": "Review a source-scoped Perplexity research plan offline, with no remote model execution.",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "approved_scope",
+    "request_sha256"
+  ],
+  "output_fields": [
+    "plan_sha256",
+    "approval_state"
+  ],
+  "exam_sha256": "2a918fe321d85f40866bb02904602fbd6af8f968144fa2f9db90f77046672aac",
+  "max_input_bytes": 16384,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0
+}

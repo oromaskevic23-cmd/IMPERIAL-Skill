@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.composio-mcp-actions",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "effd6129abe5a4144e804209824b04ea3abba5669c3f3b1c07a3b244bb8c9b0f",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "70184b87ebd131be25cab702691c0f7aaec281b6f256b3efbd200b289a9158f6",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}

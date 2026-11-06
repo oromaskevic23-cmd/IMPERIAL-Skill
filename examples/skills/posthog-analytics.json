@@ -1,0 +1,33 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "skill_id": "imperial.skill.posthog-analytics",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "analytics-orch",
+  "runtime_domain": "DATA_ANALYSIS",
+  "description": "Review a privacy-controlled PostHog product metrics plan offline; no telemetry is sent.",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "approved_scope",
+    "request_sha256"
+  ],
+  "output_fields": [
+    "plan_sha256",
+    "approval_state"
+  ],
+  "exam_sha256": "877ea2a3ebb6db19599d868f6773c4511540aae326d3b7a291bd0a53aefa0177",
+  "max_input_bytes": 16384,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0
+}

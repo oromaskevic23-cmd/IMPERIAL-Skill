@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.firecrawl-extraction",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "a4942ac47950c38b72c36ff14f62ba9a9c9d046b170fd1923e58aa62f54a094e",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "98414d8077b39f17a0d22038261652ee73cecf90b374f64c33baa0395ac6f1e8",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}

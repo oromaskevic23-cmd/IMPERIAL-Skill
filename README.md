@@ -136,3 +136,10 @@ Technical references are agent-desktop (Apache-2.0), nanochat (MIT), Scrapling (
 The new [100 Subagents Skill](skills/100-subagents/SKILL.md) implements a source-only, deterministic plan for **exactly 100 symbolic sub-NCA identities across 10 squads of 10**, with task-bound SHA-256, a maximum of 10 proposed concurrent slots, and strict fail-closed validation. It provides a runnable [offline demonstration](tools/demo_subagents_100.py), [adversarial regression tests](tests/test_subagents_100.py), SHA-256-bound [manifest and exam](examples/skills/subagents-100.json), and [production admission requirements](docs/SUBAGENTS_100.md).
 
 **Truth boundary:** no real subagents, Owner credentials, model inference, independent external QA, cloud workers or 24/7 server deployment are created; all plans report execution_authorized=false, worker_started=false and spending_usd=0. Real HANTER → federated orchestrator → NCA deployment requires separate Owner Ed25519, AI Passport, Guardian Core, Approval Gateway, Audit Ledger, ProofGraph, independent QA and Owner Kill Switch evidence.
+
+
+## Five Governed Provider Skills (6 November 2026)
+
+Five source-registered, closed-schema Enterprise Skills are now available for future integration: **Perplexity research**, **Firecrawl extraction**, **PostHog analytics**, **Playwright E2E** and **Composio MCP actions**. Each has its own [SKILL.md](skills/), SHA-256-bound manifest/exam and fail-closed offline regression coverage. See the [provider integration and release plan](docs/FIVE_PROVIDER_SKILLS.md).
+
+**Integration is not activation:** Firecrawl and PostHog are installed as ChatGPT plugins (not proven server deployments). No Perplexity or Composio ChatGPT plugin was found, and Playwright is a target-project test dependency. None of these five provider adapters has been authenticated, deployed or granted live rights by adding this source. Owner approval, AI Passport, Guardian Core, independent QA, Approval Gateway, ProofGraph, Audit Ledger and Owner Kill Switch remain mandatory before real NCA execution.

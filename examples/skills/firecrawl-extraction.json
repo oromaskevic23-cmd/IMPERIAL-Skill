@@ -1,0 +1,33 @@
+{
+  "schema": "imperial.skill.manifest.v1",
+  "skill_id": "imperial.skill.firecrawl-extraction",
+  "version": "0.1.0",
+  "tenant_id": "imperial-internal",
+  "orchestrator_id": "analytics-orch",
+  "runtime_domain": "DATA_ANALYSIS",
+  "description": "Review an allowlisted Firecrawl extraction plan offline, with no HTTP activity.",
+  "capabilities": [
+    "read:public",
+    "simulate:task"
+  ],
+  "dependencies": [],
+  "input_fields": [
+    "task_id",
+    "approved_scope",
+    "request_sha256"
+  ],
+  "output_fields": [
+    "plan_sha256",
+    "approval_state"
+  ],
+  "exam_sha256": "0b9f7a8263d0c2a97257a626ce4b6955471c49b9f9b56a78d2e709d6c6dad31b",
+  "max_input_bytes": 16384,
+  "max_output_bytes": 16384,
+  "risk_tier": "GUARDED",
+  "data_only": true,
+  "independent_qa_required": true,
+  "owner_approval_required": true,
+  "external_effects": false,
+  "production_authorized": false,
+  "spending_usd": 0
+}
