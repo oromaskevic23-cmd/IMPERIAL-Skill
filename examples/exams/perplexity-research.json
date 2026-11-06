@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.perplexity-research",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "60359afd53eb64c9495120c6d371b4f8ce3d006eac10d2339c45e6c0a1aad0f3",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "7f8e0a0b8f90e1739461d4bb66dc63cb1dc00a1db481f07792aa025d070599f3",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}
