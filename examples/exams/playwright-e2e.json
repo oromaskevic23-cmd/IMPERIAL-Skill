@@ -1,0 +1,19 @@
+{
+  "schema": "imperial.skill.offline-exam.v1",
+  "skill_id": "imperial.skill.playwright-e2e",
+  "version": "0.1.0",
+  "cases": [
+    {
+      "case_id": "accept-synthetic",
+      "expected_sha256": "edc267a62832ec1818732239c960bdb0f44d45b4aab9d8451fc9d9018379d704",
+      "critical": true
+    },
+    {
+      "case_id": "deny-unsafe",
+      "expected_sha256": "e64ac05c2d991281a3e0c0a9e31cb30e5b41b2b0bfe57c154d967936ae7b132f",
+      "critical": true
+    }
+  ],
+  "minimum_percent": 100,
+  "independent_qa_required": true
+}
