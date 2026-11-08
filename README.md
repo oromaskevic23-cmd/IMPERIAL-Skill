@@ -4,7 +4,7 @@
 
 [![Enterprise Skills CI](https://github.com/oromaskevic23-cmd/IMPERIAL-Skill/actions/workflows/enterprise-skill-ci.yml/badge.svg)](https://github.com/oromaskevic23-cmd/IMPERIAL-Skill/actions/workflows/enterprise-skill-ci.yml)
 
-**Founder · Owner · CEO · Chief Systems Architect:** Alexander Nikolaevich Romaskevich  
+**Founder · Owner · CEO:** Alexander Nikolaevich Romaskevich  
 **Signature:** RomaskevicH  
 **Engineering philosophy:** Architecture → Implementation → Evidence
 
