@@ -2,7 +2,7 @@
 
 **Skill ID:** `imperial.skill.composio-mcp-actions`  
 **Version:** 0.1.0  
-**Architect and original integration design:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder · Owner · CEO · Chief Systems Architect, IMPERIAL Core.  
+**Architect and original integration design:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder · Owner · CEO, IMPERIAL Core.  
 **Status:** SOURCE-REGISTERED / NOT PRODUCTION ACTIVATED. Third-party tools retain their vendors' licenses, brands and terms.
 
 ## Objective

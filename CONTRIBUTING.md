@@ -1,6 +1,6 @@
 # Contribution and Review Policy
 
-IMPERIAL-Skill is maintained under the final architectural authority of **Alexander Nikolaevich Romaskevich**, Founder, Owner, CEO and Chief Systems Architect of IMPERIAL Core.
+IMPERIAL-Skill is maintained under the final architectural authority of **Alexander Nikolaevich Romaskevich**, Founder, Owner, CEO of IMPERIAL Core.
 
 Code, comments, commit messages, Skills and GitHub documentation must be in English. Preserve canonical component names and the **federated Multi-Orchestrator Architecture**.
 

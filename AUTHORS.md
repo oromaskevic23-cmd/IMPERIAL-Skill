@@ -1,6 +1,8 @@
 # Authorship and Project Authority
 
-**Founder · Owner · CEO · Chief Systems Architect:** Alexander Nikolaevich Romaskevich
+<img src="https://raw.githubusercontent.com/oromaskevic23-cmd/oromaskevic23-cmd/main/assets/alexander-romaskevich-portrait-20261110.jpg" alt="Alexander Nikolaevich Romaskevich, Founder, Owner and CEO of IMPERIAL Core" width="160" />
+
+**Founder · Owner · CEO:** Alexander Nikolaevich Romaskevich
 
 **Public signature:** RomaskevicH
 

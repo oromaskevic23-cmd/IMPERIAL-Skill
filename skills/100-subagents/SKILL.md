@@ -2,7 +2,7 @@
 
 **Skill ID:** imperial.skill.subagents-100
 **Version:** 0.1.0 (source-only executable planning reference; no deployed agents).
-**Original architect:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder, Owner, CEO and Chief Systems Architect of IMPERIAL Core.
+**Original architect:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder, Owner, CEO of IMPERIAL Core.
 
 ## Goal
 
